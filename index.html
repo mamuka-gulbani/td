@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript" src="angular.js"></script>
+</head>
+<style>
+	body{
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		background-image: url(nm.jpg);
+	}
+	input[type=text]{
+		height: 35px;
+		width: 300px;
+		outline: none;
+		border-radius: 5px;
+	}
+	input[type=checkbox]{
+		cursor: pointer;
+		padding-left: 5px;
+	}
+	span{
+		padding-left: 20px;
+	}
+	.jumbotron{
+		background-color: yellow;
+		font-size: 35px;
+		padding: 4%;
+		font-family: monospace;
+	}
+	.task{
+		font-size: 15px;
+	}
+	th{
+		background-color: yellow;
+		font-size: 18px;
+	}
+	.row{
+		justify-content: center;
+		display: flex;
+	}
+	.col-md-12{
+		width: 40%;
+	}
+	#close{
+		float: right;
+		padding-right: 5px;
+		cursor: pointer;
+	}
+</style>
+<body class="container" ng-app="myApp" ng-controller="todoCtrl">
+	<div class="jumbotron">My To-do-List</div>
+	<form ng-submit="todoAdd()">
+		<input type="text" ng-model="todoinput" required="" placeholder="Add New">
+		<input type="submit" class="btn btn-success" value="Add New" style="margin-top: -3px">
+	</form>
+	     <br>
+	     <div class="container">
+	     	<div class="row">
+	     		
+	 <div class="col-md-12">
+	 	<table class="table table-bordered table-hover" style="background-color: white;">
+	 		<tr>
+	 			<th class="text-center">Data</th>
+	 		</tr>
+
+	 		<tr ng-repeat="x in todolist" class="text-left" style="margin-left: -20px;">
+	 		<td>
+	 			<input type="checkbox" ng-model="x.done"><span class="task" ng-bind="x.todoText"></span><span id="close" ng-click="remove()">&times;</span>
+	 		</tr>
+	 	</table>
+		</div>
+	</div>
+   </div>
+   <button class="btn btn-danger" ng-click="remove()">Remove marked</button>
+</body>
+</html>
